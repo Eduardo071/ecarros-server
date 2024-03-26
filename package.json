@@ -5,7 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "test": "test",
-    "dev": "npx tsx watch src/server.ts"
+    "dev": "npx tsx watch app/server.ts"
   },
   "repository": {
     "type": "git",
