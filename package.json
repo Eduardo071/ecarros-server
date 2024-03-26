@@ -4,7 +4,8 @@
   "description": "Api do sistema ecarros.",
   "main": "server.ts",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev": "npx tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/Eduardo071/ecarros-server#readme",
   "dependencies": {
+    "@prisma/client": "^5.11.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "prisma": "^5.11.0"
