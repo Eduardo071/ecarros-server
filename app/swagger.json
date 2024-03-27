@@ -1,0 +1,177 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Api de manipulação do sistema de carros",
+        "description": "Tem como objetivo manipular os dados do sistema carros.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "Api para testes locais"
+        },
+        {
+            "url": "https://ecarros-server.onrender.com",
+            "description": "Api de produção"
+        }
+    ],
+    "paths": {
+        "/carros": {
+            "get": {
+                "summary": "Buscar todos carros.",
+                "description": "Essa rota é responsável por retornar todos carros disponiveis no catálogo.",
+                "tags": [
+                    "Carros"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/carros"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Os carros não foram encontrados."
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "carros": {
+                "type": "object",
+                "properties": {
+                    "oid_carros": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID único do carro (autoincremental)"
+                    },
+                    "oid_categorias": {
+                        "type": "integer",
+                        "description": "ID da categoria do carro"
+                    },
+                    "dt_lancamento": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Data de lançamento do carro"
+                    },
+                    "ds_marca": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Marca do carro"
+                    },
+                    "ds_modelo": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Modelo do carro"
+                    },
+                    "ds_cor": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Cor do carro"
+                    },
+                    "qtd_assentos": {
+                        "type": "integer",
+                        "description": "Quantidade de assentos no carro"
+                    },
+                    "vr_cilindradas": {
+                        "type": "integer",
+                        "description": "Volume das cilindradas do carro"
+                    },
+                    "ds_motor": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Descrição do motor do carro"
+                    },
+                    "vr_peso": {
+                        "type": "integer",
+                        "description": "Peso do carro"
+                    },
+                    "vr_preco": {
+                        "type": "integer",
+                        "description": "Preço do carro"
+                    },
+                    "qtd_km_rodados": {
+                        "type": "integer",
+                        "description": "Quantidade de quilômetros rodados pelo carro"
+                    },
+                    "tp_cambio": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Tipo de câmbio do carro"
+                    },
+                    "url_img_carro": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "description": "URL da imagem do carro"
+                    },
+                    "categorias": {
+                        "$ref": "#/components/schemas/categorias",
+                        "description": "Relacionamento com a categoria do carro"
+                    }
+                }
+            },
+            "categorias": {
+                "type": "object",
+                "properties": {
+                    "oid_categorias": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID único da categoria (autoincremental)"
+                    },
+                    "ds_categoria": {
+                        "type": "string",
+                        "maxLength": 50,
+                        "description": "Descrição da categoria"
+                    }
+                }
+            },
+            "usuarios": {
+                "type": "object",
+                "properties": {
+                    "oid_usuarios": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "ID único do usuário (autoincremental)"
+                    },
+                    "nm_usuario": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "Nome do usuário"
+                    },
+                    "ds_cpf": {
+                        "type": "string",
+                        "maxLength": 14,
+                        "description": "CPF do usuário"
+                    },
+                    "dt_nascimento": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Data de nascimento do usuário"
+                    },
+                    "ds_email": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "E-mail do usuário"
+                    },
+                    "ds_senha": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "Senha do usuário"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,9 @@ class carrosRepository {
             orderBy: {
                 ds_modelo: 'asc'
             },
+            include: {
+                categorias: true
+            }
         })
 
         return carros;
